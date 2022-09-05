@@ -1,26 +1,16 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import Box from './components/Box'
+import React from 'react';
+import {BrowserRouter ,Route, Routes} from 'react-router-dom';
+import Home from './pages/Home';
+import StarShips from './pages/StarShips';
 
-function App() {
-  const [starShips, setStarShips] = useState([]); 
-  const [pages, setPages] = useState(1); 
-
-  const newStarShips = starShips.map(starShip=> {
-    return <Box name={starShip.name} model={starShip.model} />
-  })
-
-  useEffect(() => {
-    fetch(`https://swapi.py4e.com/api/starships/?page=${pages}`)
-      .then(res => res.json())
-      .then(res => setStarShips(res.results))
-  }, [pages]);
-
-  return (
-    <body>
-      {newStarShips}
-    </body>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+      <Routes>   
+          <Route path="/" element={<Home />} />
+          <Route path="/starships" element={<StarShips />} />
+          <Route path="*" element={<div>404</div> } />
+      </Routes>
+    </BrowserRouter>
+);
 
 export default App;
