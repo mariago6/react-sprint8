@@ -39,7 +39,21 @@ export const NavLi = styled.li`
 
 export const NavbarImage = styled.img`
   object-fit: cover;
-  width: 15%;
-  height: 15%;
-  border-radius: 8px; 
+  display: block;
+  top: 50%;
+  width: 100%;
+  max-width: 203px;
+  height: 100%;
+  max-height: 88px;
+  box-sizing: border-box;
+  background-size: contain;
+`
+export const UserDiv = styled.div`
+  position: absolute;
+  right: 5vh;
+  top: 5vh;
+  width: auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 `
