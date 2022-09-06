@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Nav, NavUl, NavLi, NavContainer, NavbarImage, UserDiv} from './Navbar.styled'
 
 function Navbar() {
- return(
+ return (
   <Nav>
     <div>
       <NavbarImage src="./images/logo-starwars.jpg" alt="logo"/>

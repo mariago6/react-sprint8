@@ -27,8 +27,7 @@ export const NavContainer = styled.div`
 `
 export const NavUl = styled.ul`
   display: flex;
-  padding: 0;
-  
+  padding: 0; 
 `
 
 export const NavLi = styled.li`
