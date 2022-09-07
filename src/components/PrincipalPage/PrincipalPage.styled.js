@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Article = styled.article`
+export const ArticlePage = styled.article`
   display: flex; 
   flex-flow: column;
   align-items: center;

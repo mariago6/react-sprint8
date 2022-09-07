@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import {Nav, NavUl, NavLi, NavContainer, NavbarImage, UserDiv} from './Navbar.styled'
 
-function Navbar() {
+function Navbar({initialPage}) {
  return (
   <Nav>
     <div>
@@ -16,7 +16,7 @@ function Navbar() {
     <NavContainer>
       <NavUl>
         <NavLi><Link className="link" to="/" style={{ textDecoration: 'none'}}> HOME </Link></NavLi>
-        <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }}> STARSHIPS </Link></NavLi>
+        <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }} onClick={initialPage}> STARSHIPS </Link></NavLi>
       </NavUl>
     </NavContainer>
   </Nav>
