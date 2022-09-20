@@ -1,5 +1,4 @@
 * {
-  background-color: black;
   color: white;
 }
 body {
@@ -7,6 +6,7 @@ body {
   font-family: "DIN Next W01 Regular", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://img.freepik.com/vector-premium/cielo-estrellado-oscuridad_255502-338.jpg');
 }
 
 code {

@@ -6,7 +6,7 @@ export const BoxContainer = styled.button`
   border: solid 2px; 
   border-color: black;  
   background-color: #333;
-  opacity: 0.5;
+  opacity: 0.8;
   justify-content: center;
   text-align: left;
   width: 60%;

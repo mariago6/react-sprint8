@@ -13,6 +13,7 @@ export const Nav = styled.nav`
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
   font-size: 12px; 
   margin: 0;
+  
 `
 export const NavContainer = styled.div` 
   margin-top: 10px; 
@@ -24,6 +25,7 @@ export const NavContainer = styled.div`
   border-bottom-color: #333; 
   display: flex; 
   justify-content: center;
+  
 `
 export const NavUl = styled.ul`
   display: flex;
@@ -34,6 +36,7 @@ export const NavLi = styled.li`
   list-style-type: none;
   margin: 0 1rem;
   cursor: pointer;
+  
 `
 
 export const NavbarImage = styled.img`

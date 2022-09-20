@@ -1,8 +1,8 @@
 import React from "react";
-import {Button} from '../ButtonChange/ButtonChange.styled'
+import {ButtonStylePages} from './ButtonPages.styled'
 
-function ButtonPages({page, functPage}) {
-  return <Button type="button" onClick={functPage}>{page}</Button>
+function ButtonPages({page, functPage, active}) {
+  return <ButtonStylePages active={active} type="button" onClick={functPage}>{page}</ButtonStylePages>
 }
 
 export default ButtonPages; 
