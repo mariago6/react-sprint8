@@ -1,16 +1,35 @@
-import styled from 'styled-components'; 
+import styled from "styled-components";
 
-export const BoxContainer = styled.button`
-  padding-left: 10px; 
-  margin: 15px; 
-  border: solid 2px; 
-  border-color: black;  
-  background-color: #333;
-  opacity: 0.8;
-  justify-content: center;
-  text-align: left;
-  width: 60%;
-  cursor: pointer; 
+export const QuoteContainer = styled.h2`
+text-align: center;
+`
+
+export const ReferenceContainer = styled.h4`
+  text-align: center;
+`
+
+export const ImageContainer = styled.div`
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+`
+
+export const WelcomeButton = styled.button`
+  position: relative;
+  background: #000;
+  border: 0;
+  padding: 14px 42px;
+  border-radius: 3px;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  font-weight: 400;
+  font-size: 12px;
+  color: #fff;
+  letter-spacing: .2em;
+  box-shadow: 0 8px 32px rgba(#000,.2);
+  transition: all .2s ease;
 
   &:hover {
     animation-name: shine;
@@ -58,6 +77,10 @@ export const BoxContainer = styled.button`
     }
   }
 `
-export const TextBox = styled.p`
-  background-color: transparent;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
 `
