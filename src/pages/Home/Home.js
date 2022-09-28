@@ -8,12 +8,12 @@ function Home() {
     <div>
       <Navbar />
       <QuoteContainer>"May the Force be with you" -</QuoteContainer> 
-      <ReferenceContainer>Jedi Obi-Wan Kenobi</ReferenceContainer>
+      <ReferenceContainer>Yoda</ReferenceContainer>
       <ImageContainer>
-        <img alt="yoda" src="https://c.tenor.com/zuJSh0ddQZEAAAAC/yoda-the-force.gif"/>
+        <img alt="yoda" src="https://c.tenor.com/zuJSh0ddQZEAAAAC/yoda-the-force.gif" />
       </ImageContainer>
       <ButtonContainer>
-        <WelcomeButton type="button" onClick=''><Link className="link" to="/starships" style={{ textDecoration: 'none' }}>Click here to start</Link></WelcomeButton>
+        <WelcomeButton type="button"><Link className="link" to="/starships" style={{ textDecoration: 'none' }}>Click here to start</Link></WelcomeButton>
       </ButtonContainer>  
     </div>
   );

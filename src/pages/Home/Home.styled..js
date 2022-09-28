@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const QuoteContainer = styled.h2`
-text-align: center;
+  text-align: center;
 `
 
 export const ReferenceContainer = styled.h4`

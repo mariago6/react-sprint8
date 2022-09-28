@@ -6,8 +6,8 @@ export const ButtonStylePages = styled.button`
   font-size: 20px; 
   cursor: pointer;
   background-color: transparent; 
-  border: solid 1px;
-  border-color: white; 
+  border: solid 3px;
+  border-color: ${({color}) => color ? 'yellow' : 'transparent'};
   border-radius: 5px; 
   margin: 5px; 
 `
