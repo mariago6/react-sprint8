@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {RegistrationContainer, RegistrationBox, RegistrationForm, RegistrationButton, CloseButton, LoginButton, RegistrationTitle, RegistrationImage, ErrorText, LoginText } from './Registration.styled';
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 function Registration({closeRegistration, handleRedirect, handleNewUser}) {
   const [user, setUser] = useState({firstName: '', lastName: '', emailAdress: '', password: ''});
@@ -20,7 +22,7 @@ function Registration({closeRegistration, handleRedirect, handleNewUser}) {
 
   function firstNameValidation() {
     if(user.firstName === '') {
-      setFormError(prevFormError => ({...prevFormError, firstName: true})); 
+      setFormError(prevFormError => ({...prevFormError, firstName: true}));  
     } else {
       setFormError(prevFormError => ({...prevFormError, firstName: false}));
     }; 
@@ -58,7 +60,6 @@ function Registration({closeRegistration, handleRedirect, handleNewUser}) {
 
   function totalValidation() {
     setInitialViewError(false); 
-
     if(Object.values(formError).filter(value => value).length === 0) {
       handleNewUser(user); 
     }

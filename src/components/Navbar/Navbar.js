@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom';
 import {Nav, NavUl, NavLi, NavContainer, NavbarImage, UserDiv, ButtonRegistration} from './Navbar.styled'
 import Registration from "../Registration/Registration";
 import Login from "../Login/Login";
+import { ToastContainer, toast } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function Navbar({logged}) {
   const [isLoginOpen, setIsLoginOpen] = useState(false); 
@@ -11,6 +15,10 @@ function Navbar({logged}) {
   const [usersList, setUsersList] = useState(JSON.parse(localStorage.getItem('usersList')) || ''); 
   const [isUserLogged, setIsUserLogged] = useState(false); 
   const [loginBorder, setLoginBorder] = useState(false); 
+
+  const registrationSuccess = () => toast.success("Your registration was successful 👌 Enjoy the website!");
+  const loginSuccess = () => toast.success(' 💫 Welcome to the Star Wars website 💫'); 
+  const logoutSuccess = () => toast('Good bye, see you soon! 🤖'); 
 
   const handleLoginChange = () => {
     setIsLoginOpen(prevIsLoginOpen => !prevIsLoginOpen);
@@ -26,7 +34,7 @@ function Navbar({logged}) {
     setUsersList(prevUsersList => [...prevUsersList, user]);
     handleSignupChange(); 
     handleUserLoggedIn(); 
-    alert('Your registration was successful. Enjoy the website!'); 
+    registrationSuccess(); 
   }; 
 
   const handleLogin = (email, password) => {
@@ -35,19 +43,19 @@ function Navbar({logged}) {
       setLoginBorder(true); 
       return;  
     } 
-    alert(`Welcome to the Star Wars website. Enjoy!`)
     handleLoginChange(); 
     handleUserLoggedIn(); 
     setLoginBorder(false);
+    loginSuccess();
   }
 
   const handleUserLoggedIn = () => {
-    setIsUserLogged(prevIsUserLogged => prevIsUserLogged = true)
+    setIsUserLogged(prevIsUserLogged => prevIsUserLogged = true);
   }; 
 
   const handleLogout = () => {
     setIsUserLogged(prevIsUserLogged => prevIsUserLogged = false); 
-    alert('Good bye, see you soon!')
+    logoutSuccess() ; 
   }
 
   useEffect(() => {
@@ -77,6 +85,18 @@ function Navbar({logged}) {
           <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }} onClick={() => {!isUserLogged && handleLoginChange()}}> STARSHIPS </Link></NavLi>
         </NavUl>
       </NavContainer>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        toastStyle={{backgroundColor: 'black'}}
+        />
     </Nav>
   )
   
