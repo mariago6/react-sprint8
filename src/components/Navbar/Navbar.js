@@ -5,15 +5,17 @@ import {Nav, NavUl, NavLi, NavContainer, NavbarImage, UserDiv, ButtonRegistratio
 import Registration from "../Registration/Registration";
 import Login from "../Login/Login";
 
-function Navbar({initialPage}) {
+function Navbar({logged}) {
   const [isLoginOpen, setIsLoginOpen] = useState(false); 
   const [isSignupOpen, setIsSignupOpen] = useState(false); 
   const [usersList, setUsersList] = useState(JSON.parse(localStorage.getItem('usersList')) || ''); 
   const [isUserLogged, setIsUserLogged] = useState(false); 
+  const [loginBorder, setLoginBorder] = useState(false); 
 
   const handleLoginChange = () => {
     setIsLoginOpen(prevIsLoginOpen => !prevIsLoginOpen);
     setIsSignupOpen(prevIsSignupOpen => prevIsSignupOpen = false);  
+    setLoginBorder(false);
   }
 
   const handleSignupChange = () => {
@@ -25,17 +27,18 @@ function Navbar({initialPage}) {
     handleSignupChange(); 
     handleUserLoggedIn(); 
     alert('Your registration was successful. Enjoy the website!'); 
-  }
+  }; 
 
   const handleLogin = (email, password) => {
     const foundUser = usersList.find(user => user.emailAdress === email.current.value && user.password === password.current.value);
     if (!foundUser) {
-      console.log('Your email and/or your password are wrong, try it again');
+      setLoginBorder(true); 
       return;  
     } 
-    console.log(`Welcome to the Star Wars website`); 
+    alert(`Welcome to the Star Wars website. Enjoy!`)
     handleLoginChange(); 
     handleUserLoggedIn(); 
+    setLoginBorder(false);
   }
 
   const handleUserLoggedIn = () => {
@@ -44,12 +47,16 @@ function Navbar({initialPage}) {
 
   const handleLogout = () => {
     setIsUserLogged(prevIsUserLogged => prevIsUserLogged = false); 
-    console.log('Good bye, see you soon!')
+    alert('Good bye, see you soon!')
   }
 
   useEffect(() => {
     localStorage.setItem('usersList', JSON.stringify(usersList)); 
   }, [usersList]); 
+
+  useEffect(() => {
+    logged(isUserLogged); 
+  }, [isUserLogged]); 
 
 
   return (
@@ -58,7 +65,7 @@ function Navbar({initialPage}) {
         <NavbarImage src="./images/logo-starwars.jpg" alt="logo"/>
         <UserDiv>
           <ButtonRegistration type="button" onClick={() => handleLoginChange()} style={{visibility: isUserLogged ? 'hidden' : 'visible'}}>LOG IN</ButtonRegistration>
-          {isLoginOpen && <Login closeLogin={() => handleLoginChange()} handleLogin={handleLogin}/>}
+          {isLoginOpen && <Login closeLogin={() => handleLoginChange()} handleLogin={handleLogin} borderActive={loginBorder}/>}
           <ButtonRegistration type="button" onClick={handleSignupChange} style={{visibility: isUserLogged ? 'hidden' : 'visible'}}>SIGN UP</ButtonRegistration>
           {isSignupOpen && <Registration closeRegistration={handleSignupChange} handleRedirect={handleLoginChange} handleNewUser={handleNewUser}/>}
           <ButtonRegistration type="button" onClick={handleLogout} style={{visibility: isUserLogged ? 'visible' : 'hidden'}}>LOG OUT</ButtonRegistration>
@@ -67,7 +74,7 @@ function Navbar({initialPage}) {
       <NavContainer>
         <NavUl>
           <NavLi><Link className="link" to="/" style={{ textDecoration: 'none'}}> HOME </Link></NavLi>
-          <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }} onClick={initialPage}> STARSHIPS </Link></NavLi>
+          <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }} onClick={() => {!isUserLogged && handleLoginChange()}}> STARSHIPS </Link></NavLi>
         </NavUl>
       </NavContainer>
     </Nav>

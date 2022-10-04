@@ -22,17 +22,17 @@ export const LoginBox = styled.div`
   overflow: auto;
   display: flex; 
   flex-flow: column;
-  align-items: center;
 `
 
 export const LoginForm = styled.input`
-  margin: 5px; 
   padding: 10px; 
   color: black; 
   width: 90%; 
-  border: solid 1px;
-  border-color: black;
+  border: solid;
+  border-width: ${({error}) => error ? '2px' : '1px'};
+  border-color: ${({error}) => error ? 'red' : 'black'};
   border-radius: 3px; 
+  align-items: center; 
 `
 
 export const LoginButton = styled.button`
@@ -43,6 +43,7 @@ export const LoginButton = styled.button`
   margin: 5px; 
   padding: 10px;
   cursor: pointer;
+  font-size: 15px;
 `
 
 export const CloseLoginButton = styled.button`
@@ -63,11 +64,13 @@ export const LoginImage = styled.img`
   display: block;
   top: 50%;
   width: 100%;
-  max-width: 100px;
+  max-width: 110px;
   height: 100%;
   max-height: 88px;
   box-sizing: border-box;
   background-size: contain;
+  margin-left: auto;
+  margin-right: auto; 
 `
 
 export const LoginTitle = styled.p`
@@ -75,4 +78,10 @@ export const LoginTitle = styled.p`
   font-size: 20px; 
   letter-spacing: 2px; 
   text-align: center;
+`
+
+export const ErrorLoginText = styled.p`
+  color: red; 
+  margin-top: 0; 
+  left: 20%;  
 `

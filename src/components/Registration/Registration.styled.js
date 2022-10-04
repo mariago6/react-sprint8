@@ -10,40 +10,41 @@ export const RegistrationContainer = styled.div`
   z-index: 1;  
 `
 
-export const RegistrationBox = styled.div`
+export const RegistrationBox = styled.form`
   position: fixed;
-  top: 20%;
-  left: 35%;
-  width: 30%;
+  top: 8%;
+  left: 32%;
+  width: 35%;
   height: auto;
-  max-height: 70vh;
+  max-height: 85vh;
   background: #212121;
   padding: 20px;
   overflow: auto;
   display: flex; 
   flex-flow: column;
-  align-items: center;
 `
 
 export const RegistrationForm = styled.input`
-  margin: 5px; 
   padding: 10px; 
   color: black; 
-  width: 90%; 
-  border: solid 1px;
-  border-color: black;
+  width: 95%; 
+  border: solid;
+  border-width: ${({error}) => error ? '2px' : '1px'};
+  border-color: ${({error}) => error ? 'red' : 'black'};
   border-radius: 3px; 
+  align-items: center; 
 `
 
 export const RegistrationTitle = styled.p`
   color: yellow; 
   font-size: 20px; 
   letter-spacing: 2px; 
+  text-align: center;
 `
 
 export const RegistrationButton = styled.button`
   background-color: #484848; 
-  width: 95%;
+  width: 97%;
   border: none;
   border-radius: 3px;
   margin: 5px; 
@@ -60,8 +61,8 @@ export const CloseButton = styled.button`
   font-size: 20px; 
   width: 20%; 
   cursor: pointer;
-  left: 57%; 
-  top: 20%; 
+  left: 59%; 
+  top: 8%; 
   z-index: 1;
 ` 
 
@@ -78,9 +79,21 @@ export const RegistrationImage = styled.img`
   display: block;
   top: 50%;
   width: 100%;
-  max-width: 100px;
+  max-width: 110px;
   height: 100%;
   max-height: 88px;
   box-sizing: border-box;
   background-size: contain;
+  margin-left: auto;
+  margin-right: auto; 
+`
+
+export const ErrorText = styled.p`
+  color: red; 
+  margin-top: 0; 
+  left: 20%;  
+`
+
+export const LoginText = styled.p`
+  text-align: center; 
 `

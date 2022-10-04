@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import BoxStarShips from '../../components/BoxStarShips/BoxStarShips'; 
-import Navbar from "../../components/Navbar/Navbar";
 import ButtonPages from "../../components/ButtonPages/ButtonPages";
 import PrincipalPage from "../../components/PrincipalPage/PrincipalPage";
 import CardStarShips from "../../components/CardStarShips/CardStarShips";
@@ -51,18 +50,15 @@ function StarShips() {
     setStarShipPosition (prevStarShipPosition => prevStarShipPosition = position);
   }; 
 
-  const handleIsFalse = () => setIsActive(prevIsActive => prevIsActive = false);
-
   useEffect(() => callApi(INITIAL_API), []);
 
   return (
     <main>
-      <Navbar initialPage={() => handleIsFalse()}/>
-        {isActive ? 
-          <CardStarShips result={starShips[starShipPosition]} backFunct={() => handleChange()}/> : 
-          <PrincipalPage listStarShip={newStarShips} prevPage={previousPage} prevPageFunct={handleBeforePage} 
-            nextPage={nextPage} nextPageFunct={handleNextPage} numPag={numberPages}/>
-        }
+      {isActive ? 
+        <CardStarShips result={starShips[starShipPosition]} backFunct={() => handleChange()}/> : 
+        <PrincipalPage listStarShip={newStarShips} prevPage={previousPage} prevPageFunct={handleBeforePage} 
+          nextPage={nextPage} nextPageFunct={handleNextPage} numPag={numberPages}/>
+      }
     </main>
   );
 }
