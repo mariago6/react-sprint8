@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {RegistrationContainer, RegistrationBox, RegistrationForm, RegistrationButton, CloseButton, LoginButton, RegistrationTitle, RegistrationImage, ErrorText, LoginText } from './Registration.styled';
-import { ToastContainer, toast } from 'react-toastify'; 
-import 'react-toastify/dist/ReactToastify.css';
 
 function Registration({closeRegistration, handleRedirect, handleNewUser}) {
   const [user, setUser] = useState({firstName: '', lastName: '', emailAdress: '', password: ''});

@@ -50,7 +50,9 @@ function StarShips() {
     setStarShipPosition (prevStarShipPosition => prevStarShipPosition = position);
   }; 
 
-  useEffect(() => callApi(INITIAL_API), []);
+  console.log('Hola', starShips[starShipPosition])
+
+  useEffect(() => {console.log('Barcelona'); callApi(INITIAL_API)}, []);
 
   return (
     <main>

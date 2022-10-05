@@ -85,18 +85,6 @@ function Navbar({logged}) {
           <NavLi><Link className="link" to="/starships" style={{ textDecoration: 'none' }} onClick={() => {!isUserLogged && handleLoginChange()}}> STARSHIPS </Link></NavLi>
         </NavUl>
       </NavContainer>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        toastStyle={{backgroundColor: 'black'}}
-        />
     </Nav>
   )
   

@@ -1,8 +1,48 @@
-import React from "react";
-import { ArticleCard, CardChild } from "./CardStarShips.styled";
+import React, { useState, useEffect } from "react";
+import { ArticleCard, CardChild, Col, ButtonOpenInfo } from "./CardStarShips.styled";
 import ButtonBack from "../ButtonBack/ButtonBack";
+import PopupStarShip from "../PopupStarShip/PopupStarShip";
+import PilotCard from "../PilotCard/PilotCard";
+import FilmCard from "../FilmCard/FilmCard";
 
 function CardStarShips({result, backFunct}) {
+  const [pilots, setPilots] = useState([]);
+  const [isOpenPilotsView, setIsOpenPilotsView] = useState(false);  
+  const [films, setFilms] = useState([]); 
+  const [isOpenFilmsView, setIsOpenFilmsView] = useState(false); 
+
+  function openClosePilotView() {
+    setIsOpenPilotsView(prevIsOpenPilotView => !prevIsOpenPilotView); 
+  }
+
+  function openCloseFilmView() {
+    setIsOpenFilmsView(prevIsOpenFilmView => !prevIsOpenFilmView); 
+  }
+
+  const listInfoPilots = pilots.map((pilot, index) => {
+    return <Col><PilotCard key={index} pilots={pilot} /></Col>
+  }); 
+
+  const listInfoFilms = films.map((film, index) => {
+    return<Col><FilmCard key={index} films={film} /></Col>
+  }); 
+  
+  useEffect(() => {
+    result.pilots.forEach(pilotURL => 
+      fetch(pilotURL)
+        .then(res => res.json())
+        .then(res => setPilots(prevPilots => [...prevPilots, res]))
+    ); 
+  }, [result.pilots]); 
+
+  useEffect(() => {
+    result.films.forEach(filmURL =>
+      fetch(filmURL)
+        .then(res => res.json())
+        .then(res => setFilms(prevFilms => [...prevFilms, res]))
+    ); 
+  }, [result.films])
+
   return(
     <ArticleCard>
       <CardChild>
@@ -20,8 +60,16 @@ function CardStarShips({result, backFunct}) {
           <p>Hyperdrive rating: {result.hyperdrive_rating}</p>
           <p>MGLT: {result.MGLT}</p>
           <p>Class: {result.starship_class}</p>
-          {/* <p>Pilots: {result.pilots}</p>
-          <p>Films: {result.films}</p> */}
+          <p>Pilots: <ButtonOpenInfo onClick={openClosePilotView}> click </ButtonOpenInfo></p>
+          {isOpenPilotsView && 
+            (pilots.length === 0 ? 
+            <PopupStarShip listInformation={<p>Aquesta nau no té pilots</p>} closeView={openClosePilotView} title={'Pilots'}/> : 
+            <PopupStarShip listInformation={listInfoPilots} closeView={openClosePilotView} title={'Pilots'} />
+          )}
+          <p>Films: <ButtonOpenInfo onClick={openCloseFilmView}> click </ButtonOpenInfo></p>
+          {isOpenFilmsView &&
+            <PopupStarShip listInformation={listInfoFilms} closeView={openCloseFilmView} title={'Films'}/>
+          }
         </div>
       </CardChild>
       <ButtonBack buttonFunct={backFunct}/>
