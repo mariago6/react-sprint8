@@ -1,15 +1,15 @@
 import React from "react";
-import { FilmBox, FilmText } from "./FilmCard.styled";
+import { FilmBox, FilmText, FilmClassText } from "./FilmCard.styled";
 
 function FilmCard({films}) {
     return(
       <FilmBox>
-        <FilmText>Title: {films.title}</FilmText>
-        <FilmText>Episode Id: {films.episode_id}</FilmText>
-        <FilmText>Opening crawl: {films.opening_crawl}</FilmText>
-        <FilmText>Director: {films.director}</FilmText>
-        <FilmText>Producer: {films.producer}</FilmText>
-        <FilmText>Release date: {films.release_date}</FilmText>
+        <FilmText><FilmClassText>Title:</FilmClassText> {films.title}</FilmText>
+        <FilmText><FilmClassText>Episode Id: </FilmClassText> {films.episode_id}</FilmText>
+        <FilmText><FilmClassText>Opening crawl: </FilmClassText> {films.opening_crawl}</FilmText>
+        <FilmText><FilmClassText>Director: </FilmClassText> {films.director}</FilmText>
+        <FilmText><FilmClassText>Producer: </FilmClassText> {films.producer}</FilmText>
+        <FilmText><FilmClassText>Release date: </FilmClassText> {films.release_date}</FilmText>
       </FilmBox>
     );
   };

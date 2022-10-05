@@ -15,6 +15,9 @@ export const PilotBox = styled.div`
 
 export const PilotText = styled.p`
   margin: 2px; 
+`
+
+export const PilotClassText = styled.span`
   color: yellow; 
 `
 

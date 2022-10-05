@@ -15,6 +15,9 @@ export const FilmBox = styled.div`
   `
 
 export const FilmText = styled.p`
-  margin: 2px; 
+  margin: 2px;  
+`
+
+export const FilmClassText = styled.span`
   color: yellow; 
 `

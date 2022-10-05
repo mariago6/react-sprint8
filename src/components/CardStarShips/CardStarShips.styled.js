@@ -31,3 +31,16 @@ export const ButtonOpenInfo = styled.button`
   text-align: center;
   font-weight: bold;  
 `
+
+export const EmtyBoxText = styled.p`
+  font-size: 30px; 
+  position: absolute;
+  top: 35%; 
+  left: 23%; 
+`
+
+export const ButtonDiv = styled.div`
+  position: absolute;
+  top: 55%; 
+  left: 42%; 
+`

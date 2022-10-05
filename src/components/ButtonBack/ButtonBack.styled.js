@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ButtonBackStyle = styled.button`
-  background-color: black; 
+  background-color: transparent; 
   color: white; 
   width: 100px;
   height: 30px;

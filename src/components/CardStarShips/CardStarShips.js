@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ArticleCard, CardChild, Col, ButtonOpenInfo } from "./CardStarShips.styled";
+import { ArticleCard, CardChild, Col, ButtonOpenInfo, EmtyBoxText, ButtonDiv } from "./CardStarShips.styled";
 import ButtonBack from "../ButtonBack/ButtonBack";
 import PopupStarShip from "../PopupStarShip/PopupStarShip";
 import PilotCard from "../PilotCard/PilotCard";
@@ -13,11 +13,11 @@ function CardStarShips({result, backFunct}) {
 
   function openClosePilotView() {
     setIsOpenPilotsView(prevIsOpenPilotView => !prevIsOpenPilotView); 
-  }
+  };
 
   function openCloseFilmView() {
     setIsOpenFilmsView(prevIsOpenFilmView => !prevIsOpenFilmView); 
-  }
+  };
 
   const listInfoPilots = pilots.map((pilot, index) => {
     return <Col><PilotCard key={index} pilots={pilot} /></Col>
@@ -63,19 +63,26 @@ function CardStarShips({result, backFunct}) {
           <p>Pilots: <ButtonOpenInfo onClick={openClosePilotView}> click </ButtonOpenInfo></p>
           {isOpenPilotsView && 
             (pilots.length === 0 ? 
-            <PopupStarShip listInformation={<p>Aquesta nau no té pilots</p>} closeView={openClosePilotView} title={'Pilots'}/> : 
-            <PopupStarShip listInformation={listInfoPilots} closeView={openClosePilotView} title={'Pilots'} />
-          )}
+              <PopupStarShip 
+                listInformation={<div><EmtyBoxText>This Starship doesn't have pilots</EmtyBoxText><ButtonDiv><ButtonBack buttonFunct={openClosePilotView}/></ButtonDiv></div>} 
+                closeView={openClosePilotView} 
+                title={'Pilots'}/> : 
+              <PopupStarShip listInformation={listInfoPilots} closeView={openClosePilotView} title={'Pilots'} />
+            )}
           <p>Films: <ButtonOpenInfo onClick={openCloseFilmView}> click </ButtonOpenInfo></p>
           {isOpenFilmsView &&
-            <PopupStarShip listInformation={listInfoFilms} closeView={openCloseFilmView} title={'Films'}/>
-          }
+            (films.length === 0 ? 
+              <PopupStarShip 
+                listInformation={<div><EmtyBoxText>This Starship doesn't have films</EmtyBoxText><ButtonDiv><ButtonBack buttonFunct={openCloseFilmView}/></ButtonDiv></div>} 
+                closeView={openCloseFilmView} 
+                title={'Films'}/> :
+              <PopupStarShip listInformation={listInfoFilms} closeView={openCloseFilmView} title={'Films'}/>
+            )}
         </div>
       </CardChild>
       <ButtonBack buttonFunct={backFunct}/>
     </ArticleCard>
-  )
-  
+  ); 
 }
 
 export default CardStarShips; 
