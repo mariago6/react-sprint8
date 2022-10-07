@@ -60,7 +60,7 @@ function CardStarShips({result, backFunct}) {
           <p>Hyperdrive rating: {result.hyperdrive_rating}</p>
           <p>MGLT: {result.MGLT}</p>
           <p>Class: {result.starship_class}</p>
-          <p>Pilots: <ButtonOpenInfo onClick={openClosePilotView}> click </ButtonOpenInfo></p>
+          <p>Pilots: <ButtonOpenInfo data-testid="Button" onClick={openClosePilotView}> click </ButtonOpenInfo></p>
           {isOpenPilotsView && 
             (pilots.length === 0 ? 
               <PopupStarShip 

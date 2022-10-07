@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {Nav, NavUl, NavLi, NavContainer, NavbarImage, UserDiv, ButtonRegistration} from './Navbar.styled'
 import Registration from "../Registration/Registration";
 import Login from "../Login/Login";
-import { ToastContainer, toast } from 'react-toastify'; 
+import { toast } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
 
 
